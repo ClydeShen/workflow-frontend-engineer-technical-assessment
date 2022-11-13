@@ -17,11 +17,17 @@ const LoginForm = () => {
     e.preventDefault()
     const { username, password } = loginForm
     if (!username || !password) return
-    setLoading(true)
-    const isSuccess = await login(username, password)
-    setLoading(false)
-    if (isSuccess) {
-      navigate('/dashboard')
+
+    try {
+      setLoading(true)
+      const isSuccess = await login(username, password)
+      setLoading(false)
+      if (isSuccess) {
+        navigate('/dashboard')
+      }
+    } catch (error: any) {
+      setLoading(false)
+      alert(error.message)
     }
   }
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
