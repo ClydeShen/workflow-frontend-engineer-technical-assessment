@@ -1,3 +1,43 @@
+# Completed code
+
+Completed code for the orionhealth technical assessments
+
+first, please install by `npm install`
+The project is able to run by `npm start`
+
+The project initialized by [material-ui-typescript](https://github.com/mui/material-ui/tree/master/examples/create-react-app-with-typescript) as the suggestion below.
+
+Added extra libraries
+
+- `"react-router-dom": "^6.4.3"` for configing the router system
+- `"react-helmet": "^6.1.0"` for handling page metadata and title
+
+the Folder structure
+
+```
+root
+  |--public/
+  |--src/
+      |--apis/        API resource file and middleware
+      |--components/  shared components for pages or individual widget
+      |--contexts/    react contexts for global state management
+      |--hooks/       react custom hooks
+      |--utils/       utility functions
+      |--views/       main pages, rendered by react router system
+    |-- App.tsx       App wrapper
+    |-- index.tsx     entry point
+    |-- routes.js     router config
+
+```
+
+By the requirement, the router only accept two path `/login` and `/dashboard`, other path should redirect to `/login` (including the index path `/`)
+
+User should not able to visit `/dashboard` before the login process
+
+Once user success signin from `/login` page, the page should redirect to `/dashboard` automaticlly.
+
+The user token stored under `sessionStorage`, so as long as the browser opened, the user should able to access `/dashboard`. If the browser closed or `sessionStorage` is cleared by user, the user should not able to access `/dashboard`
+
 # Workflow Frontend Engineer Technical Assessment
 
 The intent of this technical assessment is for you to build a frontend web application which allows clinicians to login and view their patients.
