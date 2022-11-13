@@ -43,7 +43,6 @@ const handlers: handlers = {
     action: Action
   ): { isAuthenticated: boolean; isInitialized: true } => {
     const { isAuthenticated } = action.payload!
-    // console.log('INITIALIZE', isAuthenticated)
     return {
       ...state,
       isAuthenticated,
@@ -51,14 +50,12 @@ const handlers: handlers = {
     }
   },
   LOGIN: (state: InitialState) => {
-    // console.log('LOGIN')
     return {
       ...state,
       isAuthenticated: true
     }
   },
   LOGOUT: (state: InitialState) => {
-    // console.log('LOGOUT')
     return {
       ...state,
       isAuthenticated: false
@@ -72,9 +69,11 @@ export const AuthProvider = (props: Props) => {
   const [authState, dispatch] = useReducer(authReducer, initialState)
   const login = async (username: string, password: string) => {
     const headers = new Headers()
-    headers.set('Authorization', window.btoa(username + ':' + password))
+    headers.set(
+      'Authorization',
+      `Basic ${window.btoa(username + ':' + password)}`
+    )
     const response = await API.POST.login({ headers })
-    console.log('response', response)
     const isSuccess = response === 204
     if (isSuccess) {
       dispatch({ type: ActionType.LOGIN })

@@ -47,7 +47,6 @@ const PatientDetails = (props: Props) => {
     }
   }
   useEffect(() => {
-    console.log(details?.id, patient!.id)
     if (details?.id !== patient!.id) {
       fetchPatientDetails(patient!.id)
     }
