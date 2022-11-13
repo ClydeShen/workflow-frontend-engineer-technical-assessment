@@ -1,11 +1,11 @@
 import { Grid, Stack, Tab, Tabs, Typography } from '@mui/material'
-
-import React, { useEffect, useState } from 'react'
+import React, { lazy, useEffect, useState } from 'react'
 import API from '../apis'
-import ClincianDetails from '../components/ClincianDetails'
 import Page from '../components/Page'
-import PatientDetails from '../components/PatientDetails'
-import Patients from '../components/Patients'
+
+const ClincianDetails = lazy(() => import('../components/ClincianDetails'))
+const PatientDetails = lazy(() => import('../components/PatientDetails'))
+const Patients = lazy(() => import('../components/Patients'))
 
 type Patient = {
   id: string
@@ -54,7 +54,7 @@ const Dashboard = () => {
   }
 
   return (
-    <Page>
+    <Page sx={{ pt: 5 }}>
       <Grid container spacing={2}>
         <Grid item xs={12}>
           <Stack direction='row' justifyContent='space-around'>

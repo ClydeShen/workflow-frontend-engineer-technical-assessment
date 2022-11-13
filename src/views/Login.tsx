@@ -1,7 +1,8 @@
 import { Container, Stack, Typography } from '@mui/material'
-import React from 'react'
-import LoginForm from '../components/Login/LoginForm'
+import React, { lazy } from 'react'
 import Page from '../components/Page'
+
+const LoginForm = lazy(() => import('../components/Login/LoginForm'))
 const Login = () => {
   return (
     <Page
