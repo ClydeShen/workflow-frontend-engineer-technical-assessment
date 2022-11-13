@@ -2,7 +2,7 @@
 
 Completed code for the orionhealth technical assessments
 
-first, please install by `npm install`
+firstly, please install by `npm install`.
 The project is able to run by `npm start`
 
 The project initialized by [material-ui-typescript](https://github.com/mui/material-ui/tree/master/examples/create-react-app-with-typescript) as the suggestion below.
@@ -30,13 +30,15 @@ root
 
 ```
 
-By the requirement, the router only accept two path `/login` and `/dashboard`, other path should redirect to `/login` (including the index path `/`)
+By the requirement, the router only accept two path `/login` and `/dashboard`, other paths should redirect to `/login` (including the index path `/`)
 
 User should not able to visit `/dashboard` before the login process
 
 Once user success signin from `/login` page, the page should redirect to `/dashboard` automaticlly.
 
-The user token stored under `sessionStorage`, so as long as the browser opened, the user should able to access `/dashboard`. If the browser closed or `sessionStorage` is cleared by user, the user should not able to access `/dashboard`
+The user token stored under `sessionStorage`, so as long as the browser open, the user should able to access `/dashboard`. If the browser closed or `sessionStorage` is cleared by user, the user should not able to access `/dashboard`
+
+`-----------------------------------------`
 
 # Workflow Frontend Engineer Technical Assessment
 
