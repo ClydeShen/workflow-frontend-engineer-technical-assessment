@@ -1,4 +1,4 @@
-import { List, ListItem, ListItemIcon, ListItemText } from '@mui/material'
+import { List, ListItem, ListItemText } from '@mui/material'
 import React from 'react'
 type Patient = {
   id: string
@@ -19,8 +19,7 @@ const Patients = (props: Props) => {
             onClick={() => onSelect(patient)}
             sx={{ cursor: 'pointer', display: 'flex', gap: '2em' }}
           >
-            <ListItemIcon>{patient.id}</ListItemIcon>
-            <ListItemText primary={patient.name} />
+            <ListItemText primary={`${patient.name} (${patient.id})`} />
           </ListItem>
         )
       })}
