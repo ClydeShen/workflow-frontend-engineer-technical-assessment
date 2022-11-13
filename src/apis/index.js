@@ -1,9 +1,20 @@
 import { pipePromises } from '../utils/functions'
 
+/**
+ *
+ * @param {Object[]} configuration
+ * [
+ *  path: string, - fetch url
+ *  method: 'POST' | 'GET' - fetch method,
+ *  config: Object -  fetch config object including headers or body
+ * ]
+ * @returns configuration with Authorization token
+ */
 const injectHeader = async ([path, method, config]) => {
   let sessionToken =
     config?.headers?.get('Authorization') ||
     window.sessionStorage.getItem('session-token')
+
   if (sessionToken) {
     const headers = new Headers()
     headers.set('Authorization', sessionToken)
@@ -11,6 +22,17 @@ const injectHeader = async ([path, method, config]) => {
   }
   return [path, method, config]
 }
+
+/**
+ *
+ * @param {Object[]} configuration
+ * [
+ *  path: string, - fetch url
+ *  method: 'POST' | 'GET' - fetch method,
+ *  config: Object -  fetch config object including headers or body
+ * ]
+ * @returns fetch result in promise format
+ */
 const request = async ([path, method, config]) => {
   return fetch(path, {
     method,
@@ -24,8 +46,10 @@ const request = async ([path, method, config]) => {
     })
   )
 }
-
+//pipe function to inject request header automatically
 const call = pipePromises(injectHeader, request)
+
+// API middleware object defines all available requests
 const API = {
   POST: {
     login: (config) => call('/login', 'POST', config)
